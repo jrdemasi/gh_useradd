@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io"
 	"log"
-    "net"
+	"net"
 	"net/http"
 	"os"
 	"os/exec"
@@ -123,21 +123,21 @@ func fixPerms(username string) {
 }
 
 func checkResolvers() {
-    for {
-        _, err := net.LookupIP("github.com")
-	    if err != nil {
-		    log.Println("No DNS yet...")
-	    } else {
-            break
-        }
+	for {
+		_, err := net.LookupIP("github.com")
+		if err != nil {
+			log.Println("No DNS yet...")
+		} else {
+			break
+		}
 	}
-    return
+	return
 }
 
 func main() {
 	usernames := parseArgs()
 
-    checkResolvers()
+	checkResolvers()
 	for _, username := range usernames {
 		if !checkUsername(username) {
 			continue
