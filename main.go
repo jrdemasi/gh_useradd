@@ -42,7 +42,6 @@ func parseArgs() []string {
 }
 
 func checkUsername(username string) bool {
-
 	valid := false
 
 	log.Printf("Checking for GitHub user %s", username)
@@ -64,7 +63,6 @@ func checkUsername(username string) bool {
 }
 
 func addUser(username string) {
-
 	useradd, lookErr := exec.LookPath("useradd")
 	if lookErr != nil {
 		log.Fatal(lookErr)
@@ -87,8 +85,7 @@ func addUser(username string) {
 }
 
 func fetchKeys(username string) {
-
-    log.Printf("Fetching keys for user %s", username)
+	log.Printf("Fetching keys for user %s", username)
 	path := fmt.Sprintf("/home/%s/.ssh/authorized_keys", username)
 	out, err := os.Create(path)
 	if err != nil {
@@ -111,7 +108,6 @@ func fetchKeys(username string) {
 }
 
 func addSshDir(username string) {
-
 	log.Printf("Adding .ssh directory for user %s", username)
 	path := fmt.Sprintf("/home/%s/.ssh", username)
 	os.Mkdir(path, 0700)
@@ -119,7 +115,7 @@ func addSshDir(username string) {
 }
 
 func fixPerms(username string) {
-    log.Printf("Cleaning up, fixing permissions for %s", username)
+	log.Printf("Cleaning up, fixing permissions for %s", username)
 	user, _ := user.Lookup(username)
 	sshdir := fmt.Sprintf("%s/.ssh", user.HomeDir)
 	keyfile := fmt.Sprintf("%s/.ssh/authorized_keys", user.HomeDir)
