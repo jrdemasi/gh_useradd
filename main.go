@@ -41,7 +41,7 @@ func checkUsername(username string) bool {
 		log.Fatal(err)
 	}
 
-	if response.StatusCode != 200 {
+	if response.StatusCode != http.StatusOK {
 		log.Printf("%s is an invalid user", username)
 		return false
 	}
