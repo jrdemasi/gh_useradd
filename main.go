@@ -25,12 +25,9 @@ func parseArgs() []string {
 
 	// Here we assume usernames were provided as separate args, maybe with commas
 	usernames := os.Args[1:]
-	j := 0
 	for i := 0; i < len(usernames); i++ {
-		usernames[j] = strings.Replace(usernames[i], ",", "", -1)
-		j++
+		usernames[i] = strings.Replace(usernames[i], ",", "", -1)
 	}
-	usernames = usernames[:j]
 
 	return usernames
 }
